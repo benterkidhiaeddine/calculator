@@ -38,7 +38,8 @@ function operate(a,b,operator){
             return multiply(a,b);
         case "/":
             return divide(a,b);
-
+        case "%":
+            return remainder(a,b);
     }
 }
 
@@ -48,7 +49,11 @@ let calculatedNumber = "";
 //variable to store the current operator to use
 let currentOperator = "";
 
-//select the buttons 
+//select the display screen
+
+let displayScreen = document.querySelector(".screen");
+
+//select the  number buttons 
 
 const numberButtons =document.querySelectorAll("button[data-number]");
 
@@ -60,6 +65,8 @@ for (let button of numberButtons){
         button.addEventListener("click",(e)=>{
             if(calculatedNumber.length<=13){
                 calculatedNumber += e.target.dataset.number;
+                let currentDisplay = parseInt(calculatedNumber);
+                displayScreen.innerText = currentDisplay;
             }
             
         })
@@ -68,11 +75,9 @@ for (let button of numberButtons){
  
 }
 
-const equalButton = document.querySelector("button[data-symbol='=']");
+const operationButtons = document.querySelectorAll("button[data-operator]");
 
-const operationButtons = document.querySelector("button[data-operator]");
-
-
+//functionality : when the operator is clicked it will remembered to do the calculation
 for (let button of operationButtons){
     //add functionality when an operation button is clicked
 
@@ -80,3 +85,6 @@ for (let button of operationButtons){
         currentOperator = e.target.dataset.operator
     })
 }
+
+
+const equalButton = document.querySelector("button[data-symbol='=']");
