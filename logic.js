@@ -44,7 +44,11 @@ function operate(a,b,operator){
 }
 
 //variable to store the number to be calculated
+//string form first so it can be built with each click of the number-buttons
 let calculatedNumber = "";
+
+// variable to remember the number the user entered after hitting an operator button
+let rememberNumber = 0;
 
 //variable to store the current operator to use
 let currentOperator = "";
@@ -83,8 +87,32 @@ for (let button of operationButtons){
 
     button.addEventListener("click",(e)=>{
         currentOperator = e.target.dataset.operator
+        rememberNumber = parseInt(calculatedNumber);
+        //reset the calculated number so the can enter a new number
+        calculatedNumber = "";
     })
 }
 
 
 const equalButton = document.querySelector("button[data-symbol='=']");
+
+equalButton.addEventListener("click",()=>{
+    let result = operate(rememberNumber,parseInt(calculatedNumber),currentOperator);
+    if (result){
+        displayScreen.innerText =  result;
+        rememberNumber =result;
+        
+    }
+  
+    
+})
+
+const resetButton = document.querySelector("button[data-symbol='CE']");
+
+resetButton.addEventListener("click",()=>{
+    calculatedNumber="";
+    displayScreen.innerText="0";
+    rememberNumber=0;
+    currentOperator="";
+    
+})
