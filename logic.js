@@ -76,7 +76,7 @@ for (let button of numberButtons){
         button.addEventListener("click",(e)=>{
             if(calculatedNumber.length<=13){
                 calculatedNumber += e.target.dataset.number;
-                display(parseInt(calculatedNumber));
+                display(parseFloat(calculatedNumber));
             }
             
         })
@@ -97,14 +97,14 @@ for (let button of operationButtons){
         currentOperator = e.target.dataset.operator;
         
         if (rememberNumber1 ===null ){
-            rememberNumber1 = parseInt(calculatedNumber);
+            rememberNumber1 = parseFloat(calculatedNumber);
             calculatedNumber="";
         }
         //if the memory R1 is already used and the operator is hit again
         else if(rememberNumber1 !==null){
             //the user needs to have entered a new number
             if(calculatedNumber !== ""){
-                rememberNumber1 = operate(rememberNumber1,parseInt(calculatedNumber),rememberOperator);
+                rememberNumber1 = operate(rememberNumber1,parseFloat(calculatedNumber),rememberOperator);
                 display(rememberNumber1);
                 calculatedNumber="";
             }
@@ -119,10 +119,9 @@ for (let button of operationButtons){
 const equalButton = document.querySelector("button[data-symbol='=']");
 
 equalButton.addEventListener("click",()=>{
-    let result = operate(rememberNumber1,parseInt(calculatedNumber),currentOperator);
+    let result = operate(rememberNumber1,parseFloat(calculatedNumber),currentOperator);
     if (result){
-        displayScreen.innerText =  result;
-        rememberNumber =result;
+        display(result);
         
     }
   
@@ -140,3 +139,13 @@ resetButton.addEventListener("click",()=>{
     
 })
 
+//decimal point button functionality
+
+
+const decimalPointButton = document.querySelector("button[data-symbol='.']");
+
+decimalPointButton.addEventListener("click",()=>{
+    if (!calculatedNumber.includes(".")){
+        calculatedNumber += ".";
+    }
+})
