@@ -43,19 +43,26 @@ function operate(a,b,operator){
     }
 }
 
+
 //variable to store the number to be calculated
 //string form first so it can be built with each click of the number-buttons
 let calculatedNumber = "";
 
 // variable to remember the number the user entered after hitting an operator button
-let rememberNumber = 0;
+let rememberNumber1 = null;
 
 //variable to store the current operator to use
 let currentOperator = "";
 
 //select the display screen
-
 let displayScreen = document.querySelector(".screen");
+
+//function for displaying the number
+function display(displayable){
+    displayScreen.innerText = displayable;
+
+}
+
 
 //select the  number buttons 
 
@@ -69,8 +76,7 @@ for (let button of numberButtons){
         button.addEventListener("click",(e)=>{
             if(calculatedNumber.length<=13){
                 calculatedNumber += e.target.dataset.number;
-                let currentDisplay = parseInt(calculatedNumber);
-                displayScreen.innerText = currentDisplay;
+                display(parseInt(calculatedNumber));
             }
             
         })
@@ -86,10 +92,26 @@ for (let button of operationButtons){
     //add functionality when an operation button is clicked
 
     button.addEventListener("click",(e)=>{
-        currentOperator = e.target.dataset.operator
-        rememberNumber = parseInt(calculatedNumber);
-        //reset the calculated number so the can enter a new number
-        calculatedNumber = "";
+        let rememberOperator = currentOperator;
+        
+        currentOperator = e.target.dataset.operator;
+        
+        if (rememberNumber1 ===null ){
+            rememberNumber1 = parseInt(calculatedNumber);
+            calculatedNumber="";
+        }
+        //if the memory R1 is already used and the operator is hit again
+        else if(rememberNumber1 !==null){
+            //the user needs to have entered a new number
+            if(calculatedNumber !== ""){
+                rememberNumber1 = operate(rememberNumber1,parseInt(calculatedNumber),rememberOperator);
+                display(rememberNumber1);
+                calculatedNumber="";
+            }
+        }
+
+
+
     })
 }
 
@@ -97,7 +119,7 @@ for (let button of operationButtons){
 const equalButton = document.querySelector("button[data-symbol='=']");
 
 equalButton.addEventListener("click",()=>{
-    let result = operate(rememberNumber,parseInt(calculatedNumber),currentOperator);
+    let result = operate(rememberNumber1,parseInt(calculatedNumber),currentOperator);
     if (result){
         displayScreen.innerText =  result;
         rememberNumber =result;
@@ -107,12 +129,14 @@ equalButton.addEventListener("click",()=>{
     
 })
 
+//reset button functionality
 const resetButton = document.querySelector("button[data-symbol='CE']");
 
 resetButton.addEventListener("click",()=>{
     calculatedNumber="";
     displayScreen.innerText="0";
-    rememberNumber=0;
+    rememberNumber1=null;
     currentOperator="";
     
 })
+
