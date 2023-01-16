@@ -66,12 +66,14 @@ body {
 
 }
 
-button[data-operator='%'],button[data-symbol="CE"]{
+button[data-symbol='C'],button[data-symbol="CE"]{
     border-radius: 5%;
-    width:45%;
+    width:31%;
     background-color: azure;
     color: black
 }
+
+
 button[data-symbol='=']{
     background-color: azure;
     color: black
@@ -130,7 +132,7 @@ footer{
 @media only screen and (max-width: 600px) {
     .app-container{
         width : 250px;
-        height : 400px;
+        height : 500px;
     }
 
     button {
@@ -138,6 +140,9 @@ footer{
         font-size: 18px;
     }
 
+    .screen{
+        font-size: 25px;
+    }
     
  
   }

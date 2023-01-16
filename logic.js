@@ -169,3 +169,12 @@ decimalPointButton.addEventListener("click",()=>{
         display(calculatedNumber);
     }
 })
+
+//add backspace to delete functionality 
+
+const deleteButton =document.querySelector("button[data-symbol='C']");
+
+deleteButton.addEventListener("click",()=>{
+    calculatedNumber=calculatedNumber.slice(0,calculatedNumber.length-1);
+    display(calculatedNumber);
+})
