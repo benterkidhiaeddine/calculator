@@ -120,7 +120,7 @@ const equalButton = document.querySelector("button[data-symbol='=']");
 
 equalButton.addEventListener("click",()=>{
     let result = operate(rememberNumber1,parseFloat(calculatedNumber),currentOperator);
-    if (result){
+    if (result || result ===0){
         display(result);
         
     }
@@ -147,5 +147,6 @@ const decimalPointButton = document.querySelector("button[data-symbol='.']");
 decimalPointButton.addEventListener("click",()=>{
     if (!calculatedNumber.includes(".")){
         calculatedNumber += ".";
+        display(calculatedNumber);
     }
 })
