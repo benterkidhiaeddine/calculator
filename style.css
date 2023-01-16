@@ -35,6 +35,8 @@ body {
 
 
 
+  
+
 .screen{
     font-family: 'Digital-7';
     margin-bottom: 5%;
@@ -61,11 +63,12 @@ body {
 
 }
 
-
 button[data-operator='%'],button[data-symbol="CE"]{
     border-radius: 5%;
     width:45%;
 }
+
+
 button {
     height: 100px;
     width: 20%;
@@ -88,14 +91,14 @@ footer{
 
 .custom-alert{
     height : 0;
-    background-color: rgb(151, 25, 25);
+    background-color: rgb(227, 60, 60);
     color : white;
     font-size: 18px;
     display: flex;
     align-items: center;
     justify-content: space-around;
     opacity: 0;
-    transition: opacity 1s linear,height 1s linear;
+    transition: opacity 0.5s linear,height 0.5s linear;
     font-family: 'Roboto',sans-serif;
     border-radius: 10px;
 }
@@ -109,3 +112,18 @@ footer{
     font-size: 18px;
 
 }
+
+
+@media only screen and (max-width: 600px) {
+    .app-container{
+        width : 250px;
+        height : 400px;
+    }
+
+    button {
+        height : 9%;
+    }
+
+    
+ 
+  }
