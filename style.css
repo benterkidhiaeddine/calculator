@@ -85,3 +85,27 @@ footer{
     align-items: center;
     justify-content: center;
 }
+
+.custom-alert{
+    height : 0;
+    background-color: rgb(151, 25, 25);
+    color : white;
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    opacity: 0;
+    transition: opacity 1s linear,height 1s linear;
+    font-family: 'Roboto',sans-serif;
+    border-radius: 10px;
+}
+
+.close{
+    border-radius: 10%;
+    color:white;
+    background-color: red;
+    height:fit-content;
+    width: fit-content;
+    font-size: 18px;
+
+}

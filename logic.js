@@ -18,10 +18,25 @@ function subtract(a,b){
 function multiply (a,b){
     return a*b;
 }
-
+//create the custom alert element 
+const customAlert = document.createElement("div");
+customAlert.innerText="You can't divide by zero";
+customAlert.className="custom-alert";
+const mainNode =document.querySelector(".main");
+const body = document.body.insertBefore(customAlert,mainNode);
+const closeButton = document.createElement("button");
+closeButton.className="close";
+closeButton.innerText="Close";
+customAlert.appendChild(closeButton);
+closeButton.addEventListener("click",function(){
+    customAlert.style.opacity="0";
+    customAlert.style.height="0"
+})
 function divide(a,b){
     if(b===0){
-        alert("You can't divide by zero");
+       
+        customAlert.style.opacity="1";
+        customAlert.style.height="10%"
         return;
     }
     return Math.round((a/b)*10)/10;
