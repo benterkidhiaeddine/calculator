@@ -178,3 +178,6 @@ deleteButton.addEventListener("click",()=>{
     calculatedNumber=calculatedNumber.slice(0,calculatedNumber.length-1);
     display(calculatedNumber);
 })
+
+
+//keyboard functionality
