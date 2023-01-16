@@ -1,7 +1,8 @@
 //list of calculation functions
 function remainder(a,b){
     if(b===0){
-        alert("You can't divide by zero");
+        customAlert.style.opacity="1";
+        customAlert.style.height="10%";
         return;
     }
     return a%b;
@@ -30,7 +31,10 @@ closeButton.innerText="Close";
 customAlert.appendChild(closeButton);
 closeButton.addEventListener("click",function(){
     customAlert.style.opacity="0";
-    customAlert.style.height="0"
+    customAlert.style.height="0";
+
+
+
 })
 function divide(a,b){
     if(b===0){
